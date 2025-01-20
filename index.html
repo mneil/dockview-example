@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dockview Layout</title>
+    <!-- <script src="https://www.unpkg.com/jquery@3.7.1/dist/jquery.min.js"></script> -->
+    <script src="./node_modules/requirejs/require.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dockview-core@3.0.2/dist/styles/dockview.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        #container {
+            height: 100%;
+            width: 100%;
+        }
+        .header, .footer {
+            height: 50px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+      <div id="west"></div>
+    </div>
+    <script>
+      require.config({
+        paths: {
+          'dockview-core': 'node_modules/dockview-core/dist/dockview-core'
+        }
+      });
+      require(['dockview-core'], function() {
+        require(['index'], function() {});
+      });
+
+    </script>
+</body>
+</html>
