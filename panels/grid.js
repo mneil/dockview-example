@@ -1,5 +1,6 @@
 define('panels/grid', ['dockview-core', 'exports'],
   /**
+   * @param {import('dockview-core')} DockView
    * @param {*} exports
    */
   function(DockView, exports) {

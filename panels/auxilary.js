@@ -1,4 +1,4 @@
-define('auxilary', ['dockview-core', 'panels/default', 'panels/tab', 'exports'],
+define('panels/auxilary', ['dockview-core', 'panels/default', 'panels/tab', 'exports'],
   /**
    *
    * @param {import('dockview-core')} DockView

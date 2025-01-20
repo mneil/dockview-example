@@ -1,11 +1,12 @@
 
-require(['dockview-core', 'panels/grid', 'auxilary'],
+require(['dockview-core', 'config/grid', 'panels/grid', 'panels/auxilary'],
   /**
    * @param {import("dockview-core")} DockView
+   * @param {{data: import('dockview-core').SerializedGridviewComponent}} configGrid
    * @param {import("./panels/grid")} a
    * @param {import("./panels/tab")} auxilary
    */
-  function(DockView, {DefaultGridPanel}, auxilary) {
+  function(DockView, configGrid, {DefaultGridPanel}, auxilary) {
 
 
     /** @returns {{dispose: () => void;}} */
@@ -33,8 +34,6 @@ require(['dockview-core', 'panels/grid', 'auxilary'],
           element.style.height = '100%';
 
           const titleElement = document.createElement('span');
-          const paramsElement = document.createElement('span');
-
           titleElement.innerHTML = "TEST"
 
           element.appendChild(titleElement);
@@ -59,9 +58,7 @@ require(['dockview-core', 'panels/grid', 'auxilary'],
           // );
         },
         'right-expander': (props) => {
-          // return (
-          //   <div style={{ backgroundColor: '#252526', height: '100%' }}></div>
-          // );
+
         },
         main: (props) => {
           // return (
@@ -113,77 +110,9 @@ require(['dockview-core', 'panels/grid', 'auxilary'],
       // });
 
 
-      /** @type {import('dockview-core').SerializedGridviewComponent} */
-      const serializedGridview = {
-        grid: {
-          root: {
-            type: 'branch',
-            data: [
-              {
-                  type: 'leaf',
-                  data: {
-                      id: 'header-id',
-                      component: 'header',
-                      minimumHeight: 30,
-                      maximumHeight: 30,
-                  },
-              },
-              {
-                type: 'branch',
-                data: [
-                  {
-                      type: 'leaf',
-                      data: {
-                          id: 'sidebar-id',
-                          component: 'sidebar',
-                          minimumWidth: 30,
-                          maximumWidth: 200,
-                      },
-                  },
-                  {
-                      type: 'leaf',
-                      size: 100,
-                      data: {
-                          id: 'main-id',
-                          component: 'main',
-                          minimumWidth: 100,
-                          minimumHeight: 100,
-                          /**
-                           * it's important to give the main content a high layout priority as we want
-                           * the main layout to have priority when allocating new space
-                           */
-                          priority: DockView.LayoutPriority.High,
-                      },
-                  },
-                  {
-                      type: 'leaf',
-                      data: {
-                          id: 'right-expander-id',
-                          component: 'right-expander',
-                          // snap: true,
-                          minimumWidth: 100,
-                      },
-                  },
-                ],
-              },
-              {
-                type: 'leaf',
-                data: {
-                  id: 'footer-id',
-                  component: 'footer',
-                  minimumHeight: 30,
-                  maximumHeight: 30,
-                },
-              },
-            ],
-          },
-          width: 1000,
-          height: 1000,
-          orientation: DockView.Orientation.VERTICAL,
-        },
-      };
 
-      api.fromJSON(serializedGridview);
+
+      api.fromJSON(configGrid.data);
 
       parent.appendChild(element);
       globalThis.DockView = api;
