@@ -2,8 +2,8 @@ define('panels/auxilary', ['dockview-core', 'panels/default', 'panels/tab', 'exp
   /**
    *
    * @param {import('dockview-core')} DockView
-   * @param {import("./panels/default")} DefaultPanel
-   * @param {import("./panels/tab")} DefaultTab
+   * @param {import("./default")} DefaultPanel
+   * @param {import("./tab")} DefaultTab
    */
   function(DockView, {DefaultPanel}, {DefaultTab}, exports) {
 

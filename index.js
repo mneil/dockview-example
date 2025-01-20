@@ -4,7 +4,7 @@ require(['dockview-core', 'config/grid', 'panels/grid', 'panels/auxilary'],
    * @param {import("dockview-core")} DockView
    * @param {{data: import('dockview-core').SerializedGridviewComponent}} configGrid
    * @param {import("./panels/grid")} a
-   * @param {import("./panels/tab")} auxilary
+   * @param {import("./panels/auxilary")} auxilary
    */
   function(DockView, configGrid, {DefaultGridPanel}, auxilary) {
 
@@ -83,7 +83,7 @@ require(['dockview-core', 'config/grid', 'panels/grid', 'panels/auxilary'],
       };
 
       const api = DockView.createGridview(element, {
-        createHeaderComponent: (options) => undefined,
+        // createHeaderComponent: (options) => undefined,
         createComponent: (options) => {
           // return new ReactGridPanelView(
           //   options.id,
@@ -99,6 +99,7 @@ require(['dockview-core', 'config/grid', 'panels/grid', 'panels/auxilary'],
               return new DefaultGridPanel(options.id, '', components[options.name]);
           }
         },
+        orientation: DockView.Orientation.VERTICAL,
       });
 
       // api.addPanel({
