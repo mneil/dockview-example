@@ -6,43 +6,32 @@ function (DockView, exports) {
   class DefaultGridPanel extends DockView.GridviewPanel {
     /**
      * @param {string} id
-     * @param {string} options
-     * @param {object} component
+     * @param {string} component
+     * @param {object} options
+     * @param {object} renderer
      */
-    constructor(id, options, component) {
-      super(id, options);
-      this.component = component;
+    constructor(id, component, options, renderer) {
+      super(id, component, options);
+      this.renderer = renderer;
+      this.options = options;
     }
-
     /**
      *
      * @returns {import('dockview-core').IFrameworkPart}
      */
     getComponent() {
+      const element = this.renderer && this.renderer(this.options);
       const iFace = {
         /** @param {import('dockview-core').Parameters} params */
         update: (params) => {},
-        dispose: () => {},
+        dispose: () => {
+          element && element.remove();
+        },
       };
-      const element = this.component && this.component();
       if (element) {
         this.element.appendChild(element);
       }
       return { ...iFace };
-      // return new ReactPart(
-      //     this.element,
-      //     this.reactPortalStore,
-      //     this.reactComponent,
-      //     {
-      //         params: this._params?.params ?? {},
-      //         api: this.api,
-      //         // TODO: fix casting hack
-      //         containerApi: new GridviewApi(
-      //             (this._params as GridviewInitParameters)
-      //                 .accessor as GridviewComponent
-      //         ),
-      //     }
-      // );
     }
   }
   exports.DefaultGridPanel = DefaultGridPanel;

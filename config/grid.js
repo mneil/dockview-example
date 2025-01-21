@@ -1,3 +1,7 @@
+/**
+ * Defines the grid layout. This is a serialized configuration of
+ * the dockview api. It creates a "typical" editor layout.
+ */
 define('config/grid', ['dockview-core', 'exports'],
   /**
    * @param {import('dockview-core')} DockView
@@ -14,7 +18,7 @@ define('config/grid', ['dockview-core', 'exports'],
             {
                 type: 'leaf',
                 data: {
-                    id: 'header-id',
+                    id: 'header',
                     component: 'header',
                     minimumHeight: 30,
                     maximumHeight: 30,
@@ -23,8 +27,8 @@ define('config/grid', ['dockview-core', 'exports'],
             {
                 type: 'leaf',
                 data: {
-                    id: 'toolbar-id',
-                    component: 'toolbar',
+                    id: 'toolbar',
+                    component: 'header',
                     minimumHeight: 30,
                     maximumHeight: 30,
                 },
@@ -35,8 +39,8 @@ define('config/grid', ['dockview-core', 'exports'],
                 {
                     type: 'leaf',
                     data: {
-                        id: 'sidebar-id',
-                        component: 'sidebar',
+                        id: 'sidebar',
+                        component: 'auxilary',
                         minimumWidth: 30,
                         maximumWidth: 200,
                     },
@@ -45,7 +49,7 @@ define('config/grid', ['dockview-core', 'exports'],
                     type: 'leaf',
                     size: 100,
                     data: {
-                        id: 'main-id',
+                        id: 'main',
                         component: 'main',
                         minimumWidth: 100,
                         minimumHeight: 100,
@@ -59,8 +63,8 @@ define('config/grid', ['dockview-core', 'exports'],
                 {
                     type: 'leaf',
                     data: {
-                        id: 'right-expander-id',
-                        component: 'right-expander',
+                        id: 'right-expander',
+                        component: 'auxilary',
                         // snap: true,
                         minimumWidth: 100,
                     },
@@ -70,7 +74,7 @@ define('config/grid', ['dockview-core', 'exports'],
             {
               type: 'leaf',
               data: {
-                id: 'footer-id',
+                id: 'footer',
                 component: 'footer',
                 minimumHeight: 30,
                 maximumHeight: 30,
